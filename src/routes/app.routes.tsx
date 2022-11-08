@@ -6,16 +6,24 @@ const { Navigator, Screen } = createBottomTabNavigator();
 
 export function AppRoutes() {
   return (
-    <Navigator>
+    <Navigator
+      screenOptions={{
+        headerShown: true,
+        tabBarLabel: "Country Search Flags",
+        tabBarStyle: {
+          height: 0,
+        },
+      }}
+    >
       <Screen
         name="home"
         component={Home}
-        options={{ tabBarButton: () => null }}
+        options={{ tabBarButton: () => null, title: "Country Search" }}
       />
       <Screen
         name="details"
         component={CountryDetails}
-        options={{ tabBarButton: () => null }}
+        options={{ tabBarButton: () => null, title: "Details" }}
       />
     </Navigator>
   );

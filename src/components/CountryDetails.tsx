@@ -77,7 +77,7 @@ export function CountryDetails() {
                     <Text bold>Region:</Text> {details[0]?.continents}
                   </Text>
                 </Box>
-                <Box>
+                <Box maxWidth={100}>
                   <Text>
                     <Text bold>Capital:</Text> {details[0]?.capital}
                   </Text>

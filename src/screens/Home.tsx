@@ -38,18 +38,16 @@ export function Home() {
 
   return (
     <VStack flex={1} bgColor={"gray.200"}>
-      <Text>Country Flags Search</Text>
-
       {isLoading ? (
         <Loading />
       ) : (
         <FlatList
           data={list}
-          keyExtractor={(item) => item.name.official}
+          keyExtractor={(item) => item.name.common}
           renderItem={({ item }) => (
             <CountryCard
               data={item}
-              onPress={() => navigate("details", { name: item.name.common })}
+              onPress={() => navigate("details", { name: item.name.official })}
             />
           )}
           showsVerticalScrollIndicator={false}
