@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { FlatList, Text, useToast, VStack } from "native-base";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { api } from "../services/api";
 import { Loading } from "../components/Loading";
 import CountryCard from "../components/CountryCard";
@@ -9,6 +9,7 @@ export function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [list, setList] = useState([]);
 
+  const { navigate } = useNavigation();
   const toast = useToast();
 
   async function fetchList() {
@@ -20,7 +21,7 @@ export function Home() {
     } catch (error) {
       console.log(error);
       toast.show({
-        title: "Não foi possível carregar os bolões.",
+        title: "It was not possible to load the countries.",
         placement: "top",
         bgColor: "red.500",
       });
@@ -44,8 +45,13 @@ export function Home() {
       ) : (
         <FlatList
           data={list}
-          keyExtractor={(item) => item.name.common}
-          renderItem={({ item }) => <CountryCard data={item} />}
+          keyExtractor={(item) => item.name.official}
+          renderItem={({ item }) => (
+            <CountryCard
+              data={item}
+              onPress={() => navigate("details", { name: item.name.common })}
+            />
+          )}
           showsVerticalScrollIndicator={false}
           initialNumToRender={10}
         />

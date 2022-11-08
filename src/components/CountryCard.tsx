@@ -21,7 +21,7 @@ const CountryCard = ({ data, ...rest }: Props) => {
   return (
     <Center mx={6} my={4}>
       <Box bgColor="white" shadow={3}>
-        <TouchableOpacity activeOpacity={0.7}>
+        <TouchableOpacity activeOpacity={0.7} {...rest}>
           <Image
             source={{ uri: data.flags.png }}
             alt={`${data.name.common} flag`}
