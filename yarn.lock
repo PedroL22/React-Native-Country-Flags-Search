@@ -8209,6 +8209,11 @@ nullthrows@^1.1.1:
   resolved "https://registry.yarnpkg.com/nullthrows/-/nullthrows-1.1.1.tgz#7818258843856ae971eae4208ad7d7eb19a431b1"
   integrity sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==
 
+number-to-locale-string-polyfill@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/number-to-locale-string-polyfill/-/number-to-locale-string-polyfill-1.0.9.tgz#4fa9a293216d99349230f6eedca4cd8c9570bea0"
+  integrity sha512-2ACyxP9+fbAo/PDd8Q5VzBw1MZag3m5JREh1mskkENf67XJj0h+pBwH4Z3uKmQobb+aTy+nqJlvoDwD5/e3uHQ==
+
 ob1@0.70.3:
   version "0.70.3"
   resolved "https://registry.yarnpkg.com/ob1/-/ob1-0.70.3.tgz#f48cd5a5abf54b0c423b1b06b6d4ff4d049816cb"

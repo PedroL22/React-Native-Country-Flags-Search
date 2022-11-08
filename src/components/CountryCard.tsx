@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import { TouchableOpacity, TouchableOpacityProps } from "react-native";
 import { Box, Center, Image, Text } from "native-base";
+require("number-to-locale-string-polyfill");
 
 export interface Card {
   name: { common: string };
@@ -15,6 +16,8 @@ interface Props extends TouchableOpacityProps {
 }
 
 const CountryCard = ({ data, ...rest }: Props) => {
+  const population = data.population.toLocaleString("en-US");
+
   return (
     <Center mx={6} my={4}>
       <Box bgColor="white" shadow={3}>
@@ -31,8 +34,7 @@ const CountryCard = ({ data, ...rest }: Props) => {
             </Text>
 
             <Text>
-              <Text bold>Population:</Text>{" "}
-              {data.population.toLocaleString("en-US")}
+              <Text bold>Population:</Text> {population}
             </Text>
 
             <Text>
