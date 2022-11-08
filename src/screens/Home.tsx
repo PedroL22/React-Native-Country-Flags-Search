@@ -3,6 +3,7 @@ import { FlatList, Text, useToast, VStack } from "native-base";
 import { useFocusEffect } from "@react-navigation/native";
 import { api } from "../services/api";
 import { Loading } from "../components/Loading";
+import CountryCard from "../components/CountryCard";
 
 export function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +36,7 @@ export function Home() {
   );
 
   return (
-    <VStack flex={1}>
+    <VStack flex={1} bgColor={"gray.200"}>
       <Text>Country Flags Search</Text>
 
       {isLoading ? (
@@ -44,8 +45,9 @@ export function Home() {
         <FlatList
           data={list}
           keyExtractor={(item) => item.name.common}
-          renderItem={({ item }) => <Text>{item.name.official}</Text>}
+          renderItem={({ item }) => <CountryCard data={item} />}
           showsVerticalScrollIndicator={false}
+          initialNumToRender={10}
         />
       )}
     </VStack>
