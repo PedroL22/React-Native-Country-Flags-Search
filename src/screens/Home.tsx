@@ -62,12 +62,13 @@ export function Home() {
     <VStack flex={1} bgColor={colorScheme === "dark" ? "#1f2937" : "gray.200"}>
       <Input
         mx={6}
-        my={3}
+        mt={3}
         variant="filled"
         placeholder="Search for a country..."
-        focusOutlineColor="gray.400"
-        bgColor="gray.100"
-        _focus={{ bgColor: "gray.100" }}
+        focusOutlineColor={colorScheme === "dark" ? "#374151" : "gray.400"}
+        bgColor={colorScheme === "dark" ? "#374151" : "gray.100"}
+        color={colorScheme === "dark" ? "white" : "black"}
+        _focus={{ bgColor: colorScheme === "dark" ? "#374151" : "gray.100" }}
         value={search}
         onChangeText={(text) => searchFilter(text)}
       />
