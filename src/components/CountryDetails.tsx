@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { useColorScheme } from "react-native";
 import { Box, Center, Image, Text, useToast, VStack } from "native-base";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { api } from "../services/api";
@@ -45,13 +46,22 @@ export function CountryDetails() {
 
   const population = details[0]?.population.toLocaleString("en-US");
 
+  const colorScheme = useColorScheme();
+
   return (
-    <VStack flex={1} bgColor={"gray.200"}>
+    <VStack
+      flex={1}
+      bgColor={colorScheme === "dark" ? "#1f2937" : "gray.200"}
+      shadow={3}
+    >
       {isLoading ? (
         <Loading />
       ) : (
         <Center mx={6} my={4}>
-          <Box bgColor="white" shadow={3}>
+          <Box
+            bgColor={colorScheme === "dark" ? "#374151" : "white"}
+            shadow={3}
+          >
             <Box>
               <Image
                 source={{ uri: details[0]?.flags?.png }}
@@ -61,7 +71,11 @@ export function CountryDetails() {
               />
             </Box>
             <Box p={10}>
-              <Text bold mb={4}>
+              <Text
+                bold
+                mb={4}
+                color={colorScheme === "dark" ? "white" : "black"}
+              >
                 {details[0]?.name?.common}
               </Text>
               <Box
@@ -70,18 +84,18 @@ export function CountryDetails() {
                 justifyContent="space-between"
               >
                 <Box>
-                  <Text>
+                  <Text color={colorScheme === "dark" ? "white" : "black"}>
                     <Text bold>Population:</Text> {population}
                   </Text>
-                  <Text>
+                  <Text color={colorScheme === "dark" ? "white" : "black"}>
                     <Text bold>Region:</Text> {details[0]?.continents}
                   </Text>
                 </Box>
                 <Box maxWidth={100}>
-                  <Text>
+                  <Text color={colorScheme === "dark" ? "white" : "black"}>
                     <Text bold>Capital:</Text> {details[0]?.capital}
                   </Text>
-                  <Text>
+                  <Text color={colorScheme === "dark" ? "white" : "black"}>
                     <Text bold>Timezones:</Text> {details[0]?.timezones}
                   </Text>
                 </Box>

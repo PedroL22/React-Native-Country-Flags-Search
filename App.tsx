@@ -1,3 +1,4 @@
+import { useColorScheme } from "react-native";
 import { NativeBaseProvider, StatusBar } from "native-base";
 import { Routes } from "./src/routes";
 import { Loading } from "./src/components/Loading";
@@ -16,10 +17,12 @@ export default function App() {
     Roboto_700Bold,
   });
 
+  const colorScheme = useColorScheme();
+
   return (
     <NativeBaseProvider theme={THEME}>
       <StatusBar
-        barStyle="dark-content"
+        barStyle={colorScheme === "dark" ? "light-content" : "dark-content"}
         backgroundColor="transparent"
         translucent
       />

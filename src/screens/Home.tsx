@@ -1,5 +1,6 @@
 import React, { useCallback, useState } from "react";
-import { FlatList, Text, useToast, VStack } from "native-base";
+import { useColorScheme } from "react-native";
+import { FlatList, useToast, VStack } from "native-base";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { api } from "../services/api";
 import { Loading } from "../components/Loading";
@@ -36,8 +37,10 @@ export function Home() {
     }, [])
   );
 
+  const colorScheme = useColorScheme();
+
   return (
-    <VStack flex={1} bgColor={"gray.200"}>
+    <VStack flex={1} bgColor={colorScheme === "dark" ? "#1f2937" : "gray.200"}>
       {isLoading ? (
         <Loading />
       ) : (
