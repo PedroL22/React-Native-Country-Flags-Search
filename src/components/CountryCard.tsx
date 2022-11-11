@@ -25,7 +25,7 @@ const CountryCard = ({ data, ...rest }: Props) => {
   const colorScheme = useColorScheme();
 
   return (
-    <Center mx={6} my={4}>
+    <Center mx={6} my={3}>
       <Box bgColor={colorScheme === "dark" ? "#374151" : "white"} shadow={3}>
         <TouchableOpacity activeOpacity={0.7} {...rest}>
           <Image

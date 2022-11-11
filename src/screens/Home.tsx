@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { useColorScheme } from "react-native";
-import { FlatList, useToast, VStack } from "native-base";
+import { FlatList, Input, useToast, VStack } from "native-base";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { api } from "../services/api";
 import { Loading } from "../components/Loading";
@@ -8,7 +8,25 @@ import CountryCard from "../components/CountryCard";
 
 export function Home() {
   const [isLoading, setIsLoading] = useState(true);
-  const [list, setList] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [masterData, setMasterData] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const searchFilter = (text: string) => {
+    if (text) {
+      const newData = masterData.filter((item) => {
+        const itemData = item.name.common;
+        const textData = text;
+
+        return itemData.indexOf(textData) > -1;
+      });
+      setFilteredData(newData);
+      setSearch(text);
+    } else {
+      setFilteredData(masterData);
+      setSearch(text);
+    }
+  };
 
   const { navigate } = useNavigation();
   const toast = useToast();
@@ -18,7 +36,8 @@ export function Home() {
       setIsLoading(true);
 
       const response = await api.get("/all");
-      setList(response.data);
+      setFilteredData(response.data);
+      setMasterData(response.data);
     } catch (error) {
       console.log(error);
       toast.show({
@@ -41,11 +60,22 @@ export function Home() {
 
   return (
     <VStack flex={1} bgColor={colorScheme === "dark" ? "#1f2937" : "gray.200"}>
+      <Input
+        mx={6}
+        my={3}
+        variant="filled"
+        placeholder="Search for a country..."
+        focusOutlineColor="gray.400"
+        bgColor="gray.100"
+        _focus={{ bgColor: "gray.100" }}
+        value={search}
+        onChangeText={(text) => searchFilter(text)}
+      />
       {isLoading ? (
         <Loading />
       ) : (
         <FlatList
-          data={list}
+          data={filteredData}
           keyExtractor={(item) => item.name.common}
           renderItem={({ item }) => (
             <CountryCard
