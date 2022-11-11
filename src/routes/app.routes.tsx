@@ -1,7 +1,7 @@
 import { useColorScheme } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../screens/Home";
-import { CountryDetails } from "../components/CountryDetails";
+import { CountryDetails } from "../screens/CountryDetails";
 
 const { Navigator, Screen } = createBottomTabNavigator();
 

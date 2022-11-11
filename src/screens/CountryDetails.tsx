@@ -4,7 +4,7 @@ import { Box, Center, Image, Text, useToast, VStack } from "native-base";
 import { useFocusEffect, useRoute } from "@react-navigation/native";
 import { api } from "../services/api";
 import { Loading } from "../components/Loading";
-import { Card } from "./CountryCard";
+import { Card } from "../components/CountryCard";
 require("number-to-locale-string-polyfill");
 
 interface RouteParams {
