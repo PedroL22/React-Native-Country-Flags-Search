@@ -69,6 +69,7 @@ export function Home() {
         bgColor={colorScheme === "dark" ? "#374151" : "gray.100"}
         color={colorScheme === "dark" ? "white" : "black"}
         _focus={{ bgColor: colorScheme === "dark" ? "#374151" : "gray.100" }}
+        borderColor="transparent"
         value={search}
         onChangeText={(text) => searchFilter(text)}
       />
