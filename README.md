@@ -1,4 +1,4 @@
-# React-Native-Country-Flags-Search
+# React Native Country Flags Search
 **Mobile version of Country Flags Search.**<br/>A simple website for country searching made with React JS, Tailwind CSS and REST Countries API.
 
 **MAIN FEATURES** <br/>
