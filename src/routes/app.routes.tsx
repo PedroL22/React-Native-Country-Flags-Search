@@ -6,7 +6,7 @@ import { CountryDetails } from '../screens/CountryDetails'
 
 const { Navigator, Screen } = createBottomTabNavigator()
 
-export function AppRoutes() {
+export const AppRoutes = () => {
   const colorScheme = useColorScheme()
 
   return (

@@ -13,7 +13,8 @@ export type SpecificCountry = {
   timezones?: string[]
   continents?: string[]
   fifa: string
-}[]
+  [key: number]: any
+}
 
 export type CountryEntity = {
   name: {

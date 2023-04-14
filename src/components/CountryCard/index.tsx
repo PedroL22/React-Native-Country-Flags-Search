@@ -1,4 +1,3 @@
-import React, { memo } from 'react'
 import {
   TouchableOpacity,
   TouchableOpacityProps,
@@ -6,22 +5,16 @@ import {
 } from 'react-native'
 import { Box, Center, Image, Text } from 'native-base'
 
+import { SpecificCountry } from '../../entities/CountryEntity'
+
 require('number-to-locale-string-polyfill')
 
-export type Card = {
-  name: { common: string }
-  flags: { png: string }
-  population: number
-  continents: string
-  capital: string
+type CountryCardProps = TouchableOpacityProps & {
+  country: SpecificCountry
 }
 
-type Props = TouchableOpacityProps & {
-  data: Card
-}
-
-const CountryCard = ({ data, ...rest }: Props) => {
-  const population = data.population.toLocaleString('en-US')
+export const CountryCard = ({ country, onPress }: CountryCardProps) => {
+  const population = country?.population?.toLocaleString('en-US')
 
   const colorScheme = useColorScheme()
 
@@ -36,11 +29,11 @@ const CountryCard = ({ data, ...rest }: Props) => {
       >
         <TouchableOpacity
           activeOpacity={0.7}
-          {...rest}
+          onPress={onPress}
         >
           <Image
-            source={{ uri: data.flags.png }}
-            alt={`${data.name.common} flag`}
+            source={{ uri: country?.flags?.png }}
+            alt={`${country?.name?.common} flag`}
             resizeMode='cover'
             style={{ width: 400, height: 200 }}
           />
@@ -50,7 +43,7 @@ const CountryCard = ({ data, ...rest }: Props) => {
               mb={4}
               color={colorScheme === 'dark' ? 'white' : 'black'}
             >
-              {data.name.common}
+              {country?.name?.common}
             </Text>
 
             <Text color={colorScheme === 'dark' ? 'white' : 'black'}>
@@ -58,11 +51,11 @@ const CountryCard = ({ data, ...rest }: Props) => {
             </Text>
 
             <Text color={colorScheme === 'dark' ? 'white' : 'black'}>
-              <Text bold>Region:</Text> {data.continents}
+              <Text bold>Region:</Text> {country?.continents}
             </Text>
 
             <Text color={colorScheme === 'dark' ? 'white' : 'black'}>
-              <Text bold>Capital:</Text> {data.capital}
+              <Text bold>Capital:</Text> {country?.capital}
             </Text>
           </Box>
         </TouchableOpacity>
@@ -70,5 +63,3 @@ const CountryCard = ({ data, ...rest }: Props) => {
     </Center>
   )
 }
-
-export default memo(CountryCard)

@@ -1,7 +1,7 @@
 import { useColorScheme } from 'react-native'
 import { Center, Spinner } from 'native-base'
 
-export function Loading() {
+export const Loading = () => {
   const colorScheme = useColorScheme()
 
   return (

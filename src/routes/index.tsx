@@ -3,7 +3,7 @@ import { AppRoutes } from './app.routes'
 
 import { Box } from 'native-base'
 
-export function Routes() {
+export const Routes = () => {
   return (
     <Box flex={1}>
       <NavigationContainer>
