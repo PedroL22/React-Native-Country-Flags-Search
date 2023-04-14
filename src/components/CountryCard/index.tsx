@@ -8,7 +8,7 @@ import { Box, Center, Image, Text } from 'native-base'
 
 require('number-to-locale-string-polyfill')
 
-export interface Card {
+export type Card = {
   name: { common: string }
   flags: { png: string }
   population: number
@@ -16,7 +16,7 @@ export interface Card {
   capital: string
 }
 
-interface Props extends TouchableOpacityProps {
+type Props = TouchableOpacityProps & {
   data: Card
 }
 

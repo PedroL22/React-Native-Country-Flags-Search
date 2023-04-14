@@ -9,7 +9,7 @@ import { Card } from '../../components/CountryCard'
 
 require('number-to-locale-string-polyfill')
 
-interface RouteParams {
+type RouteParams = {
   name: string
 }
 
