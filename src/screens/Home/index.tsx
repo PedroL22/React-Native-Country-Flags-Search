@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { useColorScheme } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { FlashList } from '@shopify/flash-list'
 
 import { useFetchAllCountries } from '../../hooks/useQueryCountries'
 
-import { FlatList, Input, useToast, VStack } from 'native-base'
+import { Input, useToast, VStack } from 'native-base'
 import { CountryCard } from '../../components/CountryCard'
 import { Loading } from '../../components/Loading'
 
@@ -51,7 +52,7 @@ export const Home = () => {
       {isLoading ? (
         <Loading />
       ) : (
-        <FlatList
+        <FlashList
           data={countriesSearched}
           keyExtractor={(item) => item.name.common}
           renderItem={({ item }) => (
@@ -63,7 +64,7 @@ export const Home = () => {
             />
           )}
           showsVerticalScrollIndicator={false}
-          initialNumToRender={10}
+          estimatedItemSize={350}
         />
       )}
     </VStack>
